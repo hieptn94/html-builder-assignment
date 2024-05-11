@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.31.28",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@tanstack/router-devtools": "^1.31.28",
+    "@tanstack/router-vite-plugin": "^1.31.18",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
@@ -26,7 +29,6 @@
     "vite": "^5.2.0"
   },
   "volta": {
-    "node": "18.20.2",
-    "yarn": "4.2.2"
+    "node": "18.20.2"
   }
 }
