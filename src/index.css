@@ -128,6 +128,13 @@ table {
   border-spacing: 0;
 }
 
-html, body, #root {
+html {
+  font-family: "Noto Sans", sans-serif;
+}
+
+html,
+body,
+#root {
   height: 100%;
+  width: 100%;
 }

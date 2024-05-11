@@ -1,6 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import classes from './index.module.css'
+import { Navigate, createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/')({
-  component: () => <div></div>
-})
+export const Route = createFileRoute("/")({
+  component: () => <Navigate to="/pages" />,
+});

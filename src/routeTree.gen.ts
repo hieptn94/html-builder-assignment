@@ -12,11 +12,47 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as TemplatesIndexImport } from './routes/templates/index'
+import { Route as PagesIndexImport } from './routes/pages/index'
+import { Route as TemplatesTemplateIDImport } from './routes/templates/$templateID'
+import { Route as PagesPageIDIndexImport } from './routes/pages/$pageID/index'
+import { Route as PagesPageIDPreviewImport } from './routes/pages/$pageID/preview'
+import { Route as PagesPageIDEditImport } from './routes/pages/$pageID/edit'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const TemplatesIndexRoute = TemplatesIndexImport.update({
+  path: '/templates/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PagesIndexRoute = PagesIndexImport.update({
+  path: '/pages/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const TemplatesTemplateIDRoute = TemplatesTemplateIDImport.update({
+  path: '/templates/$templateID',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PagesPageIDIndexRoute = PagesPageIDIndexImport.update({
+  path: '/pages/$pageID/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PagesPageIDPreviewRoute = PagesPageIDPreviewImport.update({
+  path: '/pages/$pageID/preview',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PagesPageIDEditRoute = PagesPageIDEditImport.update({
+  path: '/pages/$pageID/edit',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -28,11 +64,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/templates/$templateID': {
+      preLoaderRoute: typeof TemplatesTemplateIDImport
+      parentRoute: typeof rootRoute
+    }
+    '/pages/': {
+      preLoaderRoute: typeof PagesIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/templates/': {
+      preLoaderRoute: typeof TemplatesIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/pages/$pageID/edit': {
+      preLoaderRoute: typeof PagesPageIDEditImport
+      parentRoute: typeof rootRoute
+    }
+    '/pages/$pageID/preview': {
+      preLoaderRoute: typeof PagesPageIDPreviewImport
+      parentRoute: typeof rootRoute
+    }
+    '/pages/$pageID/': {
+      preLoaderRoute: typeof PagesPageIDIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexRoute])
+export const routeTree = rootRoute.addChildren([
+  IndexRoute,
+  TemplatesTemplateIDRoute,
+  PagesIndexRoute,
+  TemplatesIndexRoute,
+  PagesPageIDEditRoute,
+  PagesPageIDPreviewRoute,
+  PagesPageIDIndexRoute,
+])
 
 /* prettier-ignore-end */
