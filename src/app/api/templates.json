@@ -1,0 +1,101 @@
+[
+  {
+    "id": "018f66ef-634a-738a-9406-53a21163d3e3",
+    "type": "page",
+    "config": {
+      "backgroundColor": {
+        "type": "color",
+        "value": "#ffffff"
+      },
+      "contentBackgroundColor": {
+        "type": "color",
+        "value": "#ffefd5"
+      },
+      "fontColor": {
+        "type": "color",
+        "value": "#000000"
+      },
+      "contentWidth": {
+        "type": "pixel",
+        "value": 500
+      }
+    },
+    "children": [
+      {
+        "id": "b47bbca6-1de9-454a-8ca6-8fcecd580374",
+        "type": "empty",
+        "config": {
+          "height": {
+            "type": "pixel",
+            "value": 50
+          },
+          "backgroundColor": {
+            "type": "color",
+            "value": ""
+          }
+        }
+      },
+      {
+        "id": "eecd3ee7-a352-4552-a36b-72160034fe75",
+        "type": "container",
+        "config": {
+          "paddingX": { "type": "pixel", "value": 10 },
+          "paddingY": { "type": "pixel", "value": 10 },
+          "alignment": { "type": "alignment", "value": "center" },
+          "backgroundColor": { "type": "color", "value": "#ffffff" }
+        },
+        "children": [
+          {
+            "id": "900a722c-14bb-44c5-9006-fe816dd92f30",
+            "type": "image",
+            "config": {
+              "url": {
+                "type": "url",
+                "value": "https://img.pokemondb.net/artwork/large/charizard.jpg"
+              },
+              "width": { "type": "pixel", "value": 300 },
+              "description": { "type": "text", "value": "charizard-image" }
+            }
+          }
+        ]
+      },
+      {
+        "id": "2d9fefb1-befe-4f81-96a2-99b152fd23eb",
+        "type": "empty",
+        "config": {
+          "height": {
+            "type": "pixel",
+            "value": 50
+          },
+          "backgroundColor": {
+            "type": "color",
+            "value": ""
+          }
+        }
+      },
+      {
+        "id": "87087883-8c47-48cd-b64b-7ff9f063575a",
+        "type": "container",
+        "config": {
+          "paddingX": { "type": "pixel", "value": 10 },
+          "paddingY": { "type": "pixel", "value": 10 },
+          "alignment": { "type": "alignment", "value": "center" },
+          "backgroundColor": { "type": "color", "value": "" }
+        },
+        "children": [
+          {
+            "id": "3499ed84-4b36-4da3-a717-3773a80fb89a",
+            "type": "link",
+            "config": {
+              "content": { "type": "text", "value": "Shop Now" },
+              "backgroundColor": { "type": "color", "value": "#000000" },
+              "url": { "type": "url", "value": "http://localhost:5173" },
+              "paddingX": { "type": "pixel", "value": 10 },
+              "paddingY": { "type": "pixel", "value": 5 }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

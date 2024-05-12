@@ -14,6 +14,7 @@ export const Alignment = z.object({
   type: z.literal("alignment"),
   value: z.union([z.literal("left"), z.literal("center"), z.literal("right")]),
 });
+export type AlignmentType = z.infer<typeof Alignment>;
 
 export const URL = z.object({
   type: z.literal("url"),
