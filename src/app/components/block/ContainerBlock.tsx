@@ -6,12 +6,11 @@ type Props = {
   block: ContainerBlockType;
 };
 export default function ContainerBlock({ block }: Props) {
-  const { id, config, children } = block;
+  const { config, children } = block;
   const paddingX = config.paddingX.value;
   const paddingY = config.paddingY.value;
   return (
     <div
-      id={id}
       style={{
         display: "flex",
         backgroundColor: config.backgroundColor.value,
@@ -22,8 +21,8 @@ export default function ContainerBlock({ block }: Props) {
         paddingRight: paddingX,
       }}
     >
-      {children.map((block) => (
-        <ContainedBlock key={block.id} block={block} />
+      {children.map((block, index) => (
+        <ContainedBlock key={index} block={block} />
       ))}
     </div>
   );

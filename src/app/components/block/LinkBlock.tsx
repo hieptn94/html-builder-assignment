@@ -4,9 +4,9 @@ type Props = {
   block: LinkBlockType;
 };
 export default function LinkBlock({ block }: Props) {
-  const { id, config } = block;
+  const { config } = block;
   return (
-    <a id={id} href={config.url.value} style={{}}>
+    <a href={config.url.value} style={{}}>
       {config.content.value}
     </a>
   );

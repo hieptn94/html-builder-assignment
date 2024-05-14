@@ -4,10 +4,9 @@ type Props = {
   block: ImageBlockType;
 };
 export default function ImageBlock({ block }: Props) {
-  const { id, config } = block;
+  const { config } = block;
   return (
     <img
-      id={id}
       src={config.url.value}
       alt={config.description.value}
       style={{

@@ -34,8 +34,8 @@ export default function Page({ page }: Props) {
           backgroundColor: config.contentBackgroundColor.value,
         }}
       >
-        {page.children.map((block) => (
-          <Block key={block.id} block={block} />
+        {page.children.map((block, index) => (
+          <Block key={index} block={block} />
         ))}
       </div>
     </div>

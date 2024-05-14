@@ -7,6 +7,7 @@ import Loading from "@/app/components/loading";
 import Error from "@/app/components/error";
 import Divider from "@/app/components/divider";
 import classes from "./index.module.css";
+import Item from "@/app/components/page/item";
 
 export default function Pages() {
   const data = useQuery({
@@ -27,7 +28,9 @@ export default function Pages() {
       <Divider />
       <main className={classes.content}>
         {match(data)
-          .with({ status: "success", data: P.select() }, () => <div></div>)
+          .with({ status: "success", data: P.select() }, (pages) =>
+            pages.map((page) => <Item key={page.id} page={page} />),
+          )
           .with({ status: "pending" }, () => <Loading />)
           .with({ status: "error" }, () => <Error />)
           .exhaustive()}

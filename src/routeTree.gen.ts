@@ -26,7 +26,6 @@ const PagesPageIDIndexLazyImport = createFileRoute('/pages/$pageID/')()
 const TemplatesTemplateIDPreviewLazyImport = createFileRoute(
   '/templates/$templateID/preview',
 )()
-const PagesPageIDPreviewLazyImport = createFileRoute('/pages/$pageID/preview')()
 const PagesPageIDEditLazyImport = createFileRoute('/pages/$pageID/edit')()
 
 // Create/Update Routes
@@ -71,13 +70,6 @@ const TemplatesTemplateIDPreviewLazyRoute =
     import('./routes/templates/$templateID/preview.lazy').then((d) => d.Route),
   )
 
-const PagesPageIDPreviewLazyRoute = PagesPageIDPreviewLazyImport.update({
-  path: '/pages/$pageID/preview',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/pages/$pageID/preview.lazy').then((d) => d.Route),
-)
-
 const PagesPageIDEditLazyRoute = PagesPageIDEditLazyImport.update({
   path: '/pages/$pageID/edit',
   getParentRoute: () => rootRoute,
@@ -105,10 +97,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagesPageIDEditLazyImport
       parentRoute: typeof rootRoute
     }
-    '/pages/$pageID/preview': {
-      preLoaderRoute: typeof PagesPageIDPreviewLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/templates/$templateID/preview': {
       preLoaderRoute: typeof TemplatesTemplateIDPreviewLazyImport
       parentRoute: typeof rootRoute
@@ -131,7 +119,6 @@ export const routeTree = rootRoute.addChildren([
   PagesIndexLazyRoute,
   TemplatesIndexLazyRoute,
   PagesPageIDEditLazyRoute,
-  PagesPageIDPreviewLazyRoute,
   TemplatesTemplateIDPreviewLazyRoute,
   PagesPageIDIndexLazyRoute,
   TemplatesTemplateIDIndexLazyRoute,
