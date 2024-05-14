@@ -1,22 +1,35 @@
-import { match } from "ts-pattern";
+import { P, match } from "ts-pattern";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTemplates } from "../../api/template";
-import Loading from "../../components/loading";
-import Item from "../../components/template/item";
+import { fetchTemplates } from "@/app/api/template";
+import Loading from "@/app/components/loading";
+import Item from "@/app/components/template/item";
+import Divider from "@/app/components/divider";
+import Error from "@/app/components/error";
 import classes from "./index.module.css";
 
 export default function Templates() {
-  const { data, status } = useQuery({
+  const data = useQuery({
     queryKey: ["templates"],
     queryFn: () => fetchTemplates(),
   });
-  return match(status)
-    .with("success", () => (
-      <div className={classes.root}>
-        {data?.map(({ id }) => <Item key={id} pageID={id} />)}
-      </div>
-    ))
-    .with("pending", () => <Loading />)
-    .with("error", () => null)
-    .exhaustive();
+  return (
+    <div className={classes.root}>
+      <header className={classes.header}>
+        <h1>Templates</h1>
+        <h2>Choose a template and customize your own</h2>
+      </header>
+      <Divider />
+      <main className={classes.content}>
+        {match(data)
+          .with({ status: "success", data: P.select() }, (templates) =>
+            templates.map((template) => (
+              <Item key={template.id} template={template} />
+            )),
+          )
+          .with({ status: "error" }, () => <Error />)
+          .with({ status: "pending" }, () => <Loading />)
+          .exhaustive()}
+      </main>
+    </div>
+  );
 }

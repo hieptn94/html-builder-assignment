@@ -1,0 +1,15 @@
+.root {
+  cursor: pointer;
+  padding: 0 16px;
+  background: rgb(24, 24, 27);
+  color: #ffffff;
+  transition: all 200ms;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  height: 36px;
+}
+
+.root:hover {
+  background: rgba(24, 24, 27, 0.9);
+}

@@ -1,31 +1,36 @@
 import { Link } from "@tanstack/react-router";
+import { PageType } from "@/app/domain/page";
 import classes from "./item.module.css";
 
 type Props = {
-  pageID: string;
+  template: PageType;
 };
-export default function Item({ pageID }: Props) {
+export default function Item({ template }: Props) {
+  const { id, name } = template;
   return (
     <div className={classes.root}>
-      <iframe
-        width={200}
-        height={400}
-        src={new URL(
-          ["templates", pageID].join("/"),
-          window.location.origin,
-        ).toString()}
-      />
-      <div className={classes.wrapper}>
-        <Link
-          to="/templates/$templateID/preview"
-          params={{
-            templateID: pageID,
-          }}
-          className={classes.preview}
-        >
-          Preview
-        </Link>
+      <div className={classes.previewContainer}>
+        <iframe
+          width={250}
+          height={330}
+          src={new URL(
+            ["templates", id].join("/"),
+            window.location.origin,
+          ).toString()}
+        />
+        <div className={classes.preview}>
+          <Link
+            to="/templates/$templateID/preview"
+            params={{
+              templateID: id,
+            }}
+            className={classes.link}
+          >
+            Preview
+          </Link>
+        </div>
       </div>
+      <p className={classes.name}>{name}</p>
     </div>
   );
 }
