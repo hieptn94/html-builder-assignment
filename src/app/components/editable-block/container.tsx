@@ -1,11 +1,16 @@
+import clsx from "clsx";
 import { ContainerBlockType } from "../../domain/block";
 import { fromAlignmentToCSS } from "../../utils/alignment";
-import ContainedBlock from "./ContainedBlock";
+import EditableContainedBlock from "./contained";
+import { useEdit } from "./context";
+import classes from "./block.module.css";
 
 type Props = {
   block: ContainerBlockType;
 };
-export default function ContainerBlock({ block }: Props) {
+
+export default function EditableContainerBlock({ block }: Props) {
+  const [id, changeID] = useEdit();
   const { config, children } = block;
   const paddingX = config.paddingX.value;
   const paddingY = config.paddingY.value;
@@ -20,9 +25,16 @@ export default function ContainerBlock({ block }: Props) {
         paddingLeft: paddingX,
         paddingRight: paddingX,
       }}
+      className={clsx(classes.root, {
+        [classes.active]: id === block.id,
+      })}
+      onClick={(e) => {
+        e.stopPropagation();
+        changeID(block.id);
+      }}
     >
-      {children.map((block, index) => (
-        <ContainedBlock key={index} block={block} />
+      {children.map((block) => (
+        <EditableContainedBlock key={block.id} block={block} />
       ))}
     </div>
   );

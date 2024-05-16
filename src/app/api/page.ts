@@ -1,6 +1,6 @@
-import { clone } from "ramda";
 import { v4 } from "uuid";
 import { PageType, Pages, PagesType } from "../domain/page";
+import { clonePage as clonePageUtil } from "../utils/page";
 
 const KEY = "pages";
 
@@ -18,16 +18,6 @@ export function fetchPages(): Promise<PagesType> {
   });
 }
 
-function doClone(page: PageType): PageType {
-  const cloned = clone(page);
-  cloned.id = v4();
-  cloned.children = cloned.children.map((block) => ({
-    ...block,
-    id: v4(),
-  }));
-  return cloned;
-}
-
 async function savePages(pages: PagesType): Promise<void> {
   return new Promise((resolve, reject) => {
     queueMicrotask(() => {
@@ -43,7 +33,7 @@ async function savePages(pages: PagesType): Promise<void> {
 }
 
 export async function clonePage(page: PageType): Promise<PageType> {
-  const cloned = doClone(page);
+  const cloned = clonePageUtil(page);
   cloned.id = v4();
   await savePage(cloned);
   return cloned;

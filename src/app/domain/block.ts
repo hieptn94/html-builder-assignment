@@ -2,6 +2,7 @@ import * as z from "zod";
 import { Alignment, Color, Pixel, Text, URL } from "./config";
 
 export const EmptyBlock = z.object({
+  id: z.string(),
   type: z.literal("empty"),
   config: z.object({
     height: Pixel,
@@ -11,6 +12,7 @@ export const EmptyBlock = z.object({
 export type EmptyBlockType = z.infer<typeof EmptyBlock>;
 
 export const ImageBlock = z.object({
+  id: z.string(),
   type: z.literal("image"),
   config: z.object({
     width: Pixel,
@@ -21,14 +23,20 @@ export const ImageBlock = z.object({
 export type ImageBlockType = z.infer<typeof ImageBlock>;
 
 export const TextBlock = z.object({
+  id: z.string(),
   type: z.literal("text"),
   config: z.object({
     content: Text,
     alignment: Alignment,
+    color: Color,
+    fontSize: Pixel,
+    lineHeight: Pixel,
   }),
 });
+export type TextBlockType = z.infer<typeof TextBlock>
 
 export const LinkBlock = z.object({
+  id: z.string(),
   type: z.literal("link"),
   config: z.object({
     content: Text,
@@ -49,6 +57,7 @@ export const ContainedBlock = z.union([
 export type ContainedBlockType = z.infer<typeof ContainedBlock>;
 
 export const ContainerBlock = z.object({
+  id: z.string(),
   type: z.literal("container"),
   config: z.object({
     paddingX: Pixel,

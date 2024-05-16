@@ -23,6 +23,7 @@
     },
     "children": [
       {
+        "id": "9fac2cdc-ef19-4013-9a46-0a15b53e0fb3",
         "type": "empty",
         "config": {
           "height": {
@@ -36,6 +37,7 @@
         }
       },
       {
+        "id": "a852a111-86fd-4f27-8797-acb9931dadef",
         "type": "container",
         "config": {
           "paddingX": { "type": "pixel", "value": 10 },
@@ -45,6 +47,7 @@
         },
         "children": [
           {
+            "id": "2df542dd-4058-4529-84d5-0b985be28a51",
             "type": "image",
             "config": {
               "url": {
@@ -58,6 +61,7 @@
         ]
       },
       {
+        "id": "83348f0d-c553-4aae-9069-49fdf1fbebc1",
         "type": "empty",
         "config": {
           "height": {
@@ -71,6 +75,7 @@
         }
       },
       {
+        "id": "ce21f20e-93c2-4503-aa81-ac4901259b7e",
         "type": "container",
         "config": {
           "paddingX": { "type": "pixel", "value": 10 },
@@ -80,6 +85,7 @@
         },
         "children": [
           {
+            "id": "630809c3-f624-4b85-a370-fb78aa3da387",
             "type": "link",
             "config": {
               "content": { "type": "text", "value": "Shop Now" },

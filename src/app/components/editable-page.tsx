@@ -1,5 +1,6 @@
 import { PageType } from "../domain/page";
-import Block from "./block";
+import EditableBlock from "./editable-block";
+import { useEdit } from "./editable-block/context";
 
 type Props = {
   page: PageType;
@@ -14,17 +15,21 @@ const baseStyles: React.CSSProperties = {
   alignItems: "center",
 };
 
-export default function Page({ page }: Props) {
-  const { id, config } = page;
+export default function EditablePage({ page }: Props) {
+  const [, changeID] = useEdit();
+  const { config } = page;
   return (
     <div
-      id={id}
       style={{
         ...baseStyles,
         height: "100%",
         overflowY: "auto",
         backgroundColor: config.backgroundColor.value,
         color: config.fontColor.value,
+      }}
+      onClick={(e) => {
+        e.preventDefault();
+        changeID("");
       }}
     >
       <div
@@ -35,7 +40,7 @@ export default function Page({ page }: Props) {
         }}
       >
         {page.children.map((block) => (
-          <Block key={block.id} block={block} />
+          <EditableBlock key={block.id} block={block} />
         ))}
       </div>
     </div>

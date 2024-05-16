@@ -6,8 +6,8 @@ import Button from "@/app/components/button";
 import Loading from "@/app/components/loading";
 import Error from "@/app/components/error";
 import Divider from "@/app/components/divider";
-import classes from "./index.module.css";
 import Item from "@/app/components/page/item";
+import classes from "./index.module.css";
 
 export default function Pages() {
   const data = useQuery({

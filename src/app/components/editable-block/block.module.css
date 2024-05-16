@@ -1,0 +1,9 @@
+.root {
+  transition: all 200ms;
+  cursor: pointer;
+  border: 1px dashed rgb(24, 24, 27);
+}
+
+.active {
+  outline: 2px solid rgb(24, 24, 27);
+}

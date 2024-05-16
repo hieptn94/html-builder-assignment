@@ -1,9 +1,10 @@
 import { match } from "ts-pattern";
 import { BlockType } from "../../domain/block";
-import EmptyBlock from "./EmptyBlock";
-import ContainerBlock from "./ContainerBlock";
-import ImageBlock from "./ImageBlock";
-import LinkBlock from "./LinkBlock";
+import EmptyBlock from "./empty";
+import ContainerBlock from "./container";
+import ImageBlock from "./image";
+import LinkBlock from "./link";
+import TextBlock from "./text";
 
 type Props = {
   block: BlockType;
@@ -15,5 +16,11 @@ export default function Block({ block }: Props) {
     .with({ type: "container" }, (block) => <ContainerBlock block={block} />)
     .with({ type: "image" }, (block) => <ImageBlock block={block} />)
     .with({ type: "link" }, (block) => <LinkBlock block={block} />)
-    .otherwise(() => null);
+    .with(
+      {
+        type: "text",
+      },
+      (block) => <TextBlock block={block} />,
+    )
+    .exhaustive();
 }
