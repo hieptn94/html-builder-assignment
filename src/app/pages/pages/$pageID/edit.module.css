@@ -8,11 +8,20 @@
   gap: 16px;
 }
 
+.back {
+  color: rgb(24, 24, 27);
+}
+
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  justify-content: flex-end;
 }
 
 .title {

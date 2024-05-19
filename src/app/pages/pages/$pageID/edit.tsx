@@ -24,6 +24,8 @@ import { KEY, PLACEHOLDER } from "./placeholder";
 import classes from "./edit.module.css";
 import { useMutation } from "@tanstack/react-query";
 import { updatePage } from "@/app/api/page";
+import { Link } from "@tanstack/react-router";
+import { ArrowLeft } from "lucide-react";
 
 function downloadFile(fileName: string, data: string) {
   const blob = new Blob([data], { type: "text/plain" }); // Adjust content type as needed
@@ -115,10 +117,15 @@ function Component({ page }: { page: PageType }) {
   return (
     <div className={classes.root}>
       <header className={classes.header}>
-        <Button disabled={isPending} onClick={() => save(page)}>
-          Save
-        </Button>
-        <Button onClick={() => exportHTML(page)}>Export</Button>
+        <Link className={classes.back} to="/pages" replace>
+          <ArrowLeft />
+        </Link>
+        <div className={classes.actions}>
+          <Button disabled={isPending} onClick={() => save(page)}>
+            Save
+          </Button>
+          <Button onClick={() => exportHTML(page)}>Export</Button>
+        </div>
       </header>
       <Divider />
       <main className={classes.content}>
