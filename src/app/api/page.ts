@@ -12,7 +12,7 @@ export function fetchPages(): Promise<PagesType> {
         const json = JSON.parse(raw);
         resolve(Pages.parse(json));
       } catch (e) {
-        console.log(e)
+        console.log(e);
         reject(e);
       }
     });
@@ -25,6 +25,26 @@ async function savePages(pages: PagesType): Promise<void> {
       try {
         const raw = JSON.stringify(pages);
         localStorage.setItem(KEY, raw);
+        resolve();
+      } catch (e) {
+        reject(e);
+      }
+    });
+  });
+}
+
+export function updatePage(page: PageType): Promise<void> {
+  return new Promise((resolve, reject) => {
+    queueMicrotask(async () => {
+      try {
+        const pages = await fetchPages();
+        const newPages = pages.map((item) => {
+          if (page.id === item.id) {
+            return page;
+          }
+          return item;
+        });
+        savePages(newPages);
         resolve();
       } catch (e) {
         reject(e);

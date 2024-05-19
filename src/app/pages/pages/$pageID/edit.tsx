@@ -22,13 +22,15 @@ import Control from "@/app/components/control";
 import { ConfigType } from "@/app/domain/config";
 import { KEY, PLACEHOLDER } from "./placeholder";
 import classes from "./edit.module.css";
+import { useMutation } from "@tanstack/react-query";
+import { updatePage } from "@/app/api/page";
 
 function downloadFile(fileName: string, data: string) {
-  const blob = new Blob([data], { type: 'text/plain' }); // Adjust content type as needed
+  const blob = new Blob([data], { type: "text/plain" }); // Adjust content type as needed
   const url = URL.createObjectURL(blob);
 
   // Create a temporary anchor element
-  const link = document.createElement('a');
+  const link = document.createElement("a");
   link.href = url;
   link.download = fileName;
 
@@ -74,7 +76,7 @@ function Component({ page }: { page: PageType }) {
         <Page page={mergeDraftConfigToPage(page, draftConfig)} />,
       );
       const content = PLACEHOLDER.replace(KEY, str);
-      downloadFile("index.html", content)
+      downloadFile("index.html", content);
     },
     [draftConfig],
   );
@@ -98,9 +100,24 @@ function Component({ page }: { page: PageType }) {
     [],
   );
 
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: (page: PageType) => updatePage(page),
+  });
+  const save = React.useCallback(
+    async (page: PageType) => {
+      const newPage = mergeDraftConfigToPage(page, draftConfig);
+      await mutateAsync(newPage);
+      alert("Page saved");
+    },
+    [draftConfig],
+  );
+
   return (
     <div className={classes.root}>
       <header className={classes.header}>
+        <Button disabled={isPending} onClick={() => save(page)}>
+          Save
+        </Button>
         <Button onClick={() => exportHTML(page)}>Export</Button>
       </header>
       <Divider />
