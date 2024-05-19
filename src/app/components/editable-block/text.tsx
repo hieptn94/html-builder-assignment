@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { TextBlockType } from "@/app/domain/block";
-import TextBlock from "../block/text";
-import { useEdit } from "./context";
+import { useDraftConfig, useEdit } from "./context";
 import classes from "./block.module.css";
 
 type Props = {
@@ -10,6 +9,9 @@ type Props = {
 
 export default function EditableTextBlock({ block }: Props) {
   const [id, changeID] = useEdit();
+  const draftConfig = useDraftConfig();
+  const config = draftConfig[block.id] as TextBlockType["config"];
+  console.log(config);
   return (
     <div
       className={clsx(classes.root, { [classes.active]: id === block.id })}
@@ -18,7 +20,17 @@ export default function EditableTextBlock({ block }: Props) {
         changeID(block.id);
       }}
     >
-      <TextBlock block={block} />
+      <p
+        style={{
+          textAlign: config.alignment.value,
+          color: config.color.value,
+          fontSize: config.fontSize.value,
+          lineHeight: `${config.lineHeight.value}px`,
+          textTransform: config.textTransform.value,
+        }}
+      >
+        {config.content.value}
+      </p>
     </div>
   );
 }

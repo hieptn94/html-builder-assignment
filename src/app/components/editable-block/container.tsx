@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { ContainerBlockType } from "../../domain/block";
 import { fromAlignmentToCSS } from "../../utils/alignment";
 import EditableContainedBlock from "./contained";
-import { useEdit } from "./context";
+import { useDraftConfig, useEdit } from "./context";
 import classes from "./block.module.css";
 
 type Props = {
@@ -11,7 +11,9 @@ type Props = {
 
 export default function EditableContainerBlock({ block }: Props) {
   const [id, changeID] = useEdit();
-  const { config, children } = block;
+  const { children } = block;
+  const draftConfig = useDraftConfig();
+  const config = draftConfig[block.id] as ContainerBlockType["config"];
   const paddingX = config.paddingX.value;
   const paddingY = config.paddingY.value;
   return (

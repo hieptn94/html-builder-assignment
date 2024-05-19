@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { EmptyBlockType } from "../../domain/block";
-import EmptyBlock from "../block/empty";
-import { useEdit } from "./context";
+import { useDraftConfig, useEdit } from "./context";
 import classes from "./block.module.css";
 
 type Props = {
@@ -10,6 +9,8 @@ type Props = {
 
 export default function EditableEmptyBlock({ block }: Props) {
   const [id, changeID] = useEdit();
+  const draftConfig = useDraftConfig();
+  const config = draftConfig[block.id] as EmptyBlockType["config"];
   return (
     <div
       className={clsx(classes.root, {
@@ -20,7 +21,13 @@ export default function EditableEmptyBlock({ block }: Props) {
         changeID(block.id);
       }}
     >
-      <EmptyBlock block={block} />
+      <div
+        style={{
+          width: "100%",
+          backgroundColor: config.backgroundColor.value,
+          height: config.height.value,
+        }}
+      />
     </div>
   );
 }

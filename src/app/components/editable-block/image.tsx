@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { ImageBlockType } from "../../domain/block";
-import ImageBlock from "../block/image";
-import { useEdit } from "./context";
+import { useDraftConfig, useEdit } from "./context";
 import classes from "./block.module.css";
 
 type Props = {
@@ -9,6 +8,8 @@ type Props = {
 };
 export default function EditableImageBlock({ block }: Props) {
   const [id, changeID] = useEdit();
+  const draftConfig = useDraftConfig();
+  const config = draftConfig[block.id] as ImageBlockType["config"];
   return (
     <div
       className={clsx(classes.root, {
@@ -19,7 +20,14 @@ export default function EditableImageBlock({ block }: Props) {
         changeID(block.id);
       }}
     >
-      <ImageBlock block={block} />
+      <img
+        src={config.url.value}
+        alt={config.description.value}
+        style={{
+          width: config.width.value,
+          height: "100%",
+        }}
+      />
     </div>
   );
 }

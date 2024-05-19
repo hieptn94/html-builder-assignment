@@ -30,8 +30,8 @@ export default function Page({ page }: Props) {
       <div
         style={{
           flex: 1,
-          width: config.contentWidth.value,
           backgroundColor: config.contentBackgroundColor.value,
+          width: 400,
         }}
       >
         {page.children.map((block) => (

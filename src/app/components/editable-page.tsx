@@ -1,6 +1,6 @@
 import { PageType } from "../domain/page";
 import EditableBlock from "./editable-block";
-import { useEdit } from "./editable-block/context";
+import { useDraftConfig, useEdit } from "./editable-block/context";
 
 type Props = {
   page: PageType;
@@ -17,7 +17,9 @@ const baseStyles: React.CSSProperties = {
 
 export default function EditablePage({ page }: Props) {
   const [, changeID] = useEdit();
-  const { config } = page;
+  const draftConfig = useDraftConfig();
+  const config = draftConfig[page.id] as PageType["config"];
+
   return (
     <div
       style={{
@@ -29,13 +31,13 @@ export default function EditablePage({ page }: Props) {
       }}
       onClick={(e) => {
         e.preventDefault();
-        changeID("");
+        changeID(page.id);
       }}
     >
       <div
         style={{
           flex: 1,
-          width: config.contentWidth.value,
+          width: 400,
           backgroundColor: config.contentBackgroundColor.value,
         }}
       >

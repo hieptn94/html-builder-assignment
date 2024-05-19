@@ -12,6 +12,7 @@ export function fetchPages(): Promise<PagesType> {
         const json = JSON.parse(raw);
         resolve(Pages.parse(json));
       } catch (e) {
+        console.log(e)
         reject(e);
       }
     });

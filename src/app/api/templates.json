@@ -15,10 +15,6 @@
       "fontColor": {
         "type": "color",
         "value": "#000000"
-      },
-      "contentWidth": {
-        "type": "pixel",
-        "value": 500
       }
     },
     "children": [
@@ -92,7 +88,93 @@
               "backgroundColor": { "type": "color", "value": "#000000" },
               "url": { "type": "url", "value": "http://localhost:5173" },
               "paddingX": { "type": "pixel", "value": 10 },
-              "paddingY": { "type": "pixel", "value": 5 }
+              "paddingY": { "type": "pixel", "value": 5 },
+              "textTransform": {
+                "type": "text-transform",
+                "value": "uppercase"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c67e95ed-aae4-4e32-b84e-97160ce03164",
+    "type": "page",
+    "name": "template 2",
+    "config": {
+      "backgroundColor": { "type": "color", "value": "#BA9C9C" },
+      "fontColor": { "type": "color", "value": "#000000" },
+      "contentBackgroundColor": { "type": "color", "value": "#ffefd5" }
+    },
+    "children": [
+      {
+        "id": "9bd43f49-9517-4e07-9f96-ee6e5c028394",
+        "type": "empty",
+        "config": {
+          "height": { "type": "pixel", "value": 40 },
+          "backgroundColor": { "type": "color", "value": "#ffffff" }
+        }
+      },
+      {
+        "id": "7f3bc54f-3aef-46a8-a435-f66b4b03b3c5",
+        "type": "container",
+        "config": {
+          "backgroundColor": { "type": "color", "value": "#ffffff" },
+          "paddingX": { "type": "pixel", "value": 0 },
+          "paddingY": { "type": "pixel", "value": 0 },
+          "alignment": { "type": "alignment", "value": "center" }
+        },
+        "children": [
+          {
+            "id": "6e3d927a-b1b6-4ab9-a13d-0f55c097678e",
+            "type": "text",
+            "config": {
+              "content": {
+                "type": "text",
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus in neque dictum, aliquam neque ut, sodales turpis. Mauris ultrices augue nibh, et condimentum arcu tristique nec. Proin semper, tortor eu varius ultricies, metus orci lobortis neque, id efficitur lectus arcu in tellus. Vivamus sed augue sed arcu dapibus fermentum blandit non justo. Fusce tempus arcu arcu, vitae porta mauris dictum sed. Duis nec urna lorem. Duis vitae dolor ornare, gravida odio nec, dictum odio. Curabitur placerat urna in molestie viverra. Vivamus nec ligula et ligula hendrerit porttitor. Fusce aliquam vel lectus cursus interdum. In tincidunt molestie molestie. Mauris felis sapien, scelerisque nec molestie id, fermentum id ligula."
+              },
+              "color": { "type": "color", "value": "#000000" },
+              "alignment": { "type": "alignment", "value": "center" },
+              "fontSize": { "type": "pixel", "value": 16 },
+              "lineHeight": { "type": "pixel", "value": 22 },
+              "textTransform": {
+                "type": "text-transform",
+                "value": "capitalize"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "18d7fade-a7cb-496d-8c09-33905070326e",
+        "type": "empty",
+        "config": {
+          "height": { "type": "pixel", "value": 40 },
+          "backgroundColor": { "type": "color", "value": "#ffffff" }
+        }
+      },
+      {
+        "id": "be967700-1368-4c61-8e5f-ecbe42d661f5",
+        "type": "container",
+        "config": {
+          "paddingX": { "type": "pixel", "value": 10 },
+          "paddingY": { "type": "pixel", "value": 10 },
+          "alignment": { "type": "alignment", "value": "center" },
+          "backgroundColor": { "type": "color", "value": "#ffffff" }
+        },
+        "children": [
+          {
+            "id": "5ffaef05-1ac5-44da-bfde-e0f1db399c9c",
+            "type": "image",
+            "config": {
+              "url": {
+                "type": "url",
+                "value": "https://img.pokemondb.net/artwork/large/charizard.jpg"
+              },
+              "width": { "type": "pixel", "value": 300 },
+              "description": { "type": "text", "value": "charizard-image" }
             }
           }
         ]

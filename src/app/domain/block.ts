@@ -1,5 +1,5 @@
 import * as z from "zod";
-import { Alignment, Color, Pixel, Text, URL } from "./config";
+import { Alignment, Color, Pixel, Text, TextTransform, URL } from "./config";
 
 export const EmptyBlock = z.object({
   id: z.string(),
@@ -31,9 +31,10 @@ export const TextBlock = z.object({
     color: Color,
     fontSize: Pixel,
     lineHeight: Pixel,
+    textTransform: TextTransform,
   }),
 });
-export type TextBlockType = z.infer<typeof TextBlock>
+export type TextBlockType = z.infer<typeof TextBlock>;
 
 export const LinkBlock = z.object({
   id: z.string(),
@@ -44,6 +45,7 @@ export const LinkBlock = z.object({
     backgroundColor: Color,
     paddingX: Pixel,
     paddingY: Pixel,
+    textTransform: TextTransform,
   }),
 });
 export type LinkBlockType = z.infer<typeof LinkBlock>;

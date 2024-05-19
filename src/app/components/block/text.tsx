@@ -11,8 +11,9 @@ export default function TextBlock({ block }: Props) {
       style={{
         textAlign: config.alignment.value,
         color: config.color.value,
-        fontSize: config.color.value,
-        lineHeight: config.color.value,
+        fontSize: config.fontSize.value,
+        lineHeight: `${config.lineHeight.value}px`,
+        textTransform: config.textTransform.value,
       }}
     >
       {config.content.value}
